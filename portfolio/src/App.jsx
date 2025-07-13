@@ -13,7 +13,7 @@ import ThankYou from "./pages/ThankYou";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
+<div className="min-h-screen bg-white text-black dark:bg-[#0a192f] dark:text-white transition-colors duration-300">
         <Navbar />
         <main className="flex-grow">
           <Routes>
