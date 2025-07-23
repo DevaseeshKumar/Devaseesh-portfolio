@@ -1,8 +1,9 @@
-// components/Footer.jsx
 const Footer = () => {
   return (
-    <footer className="bg-white py-6 text-center border-t mt-10">
-      <p className="text-gray-600">© {new Date().getFullYear()} MyPortfolio. All rights reserved.</p>
+    <footer className="bg-white dark:bg-[#0a192f] py-6 text-center border-t border-gray-200 dark:border-gray-700 mt-10 transition-all duration-500">
+      <p className="text-gray-600 dark:text-gray-300">
+        © {new Date().getFullYear()} <span className="font-semibold text-blue-600 dark:text-blue-400">MyPortfolio</span>. All rights reserved.
+      </p>
     </footer>
   );
 };

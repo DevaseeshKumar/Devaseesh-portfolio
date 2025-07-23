@@ -4,6 +4,7 @@ import About from "../pages/About";
 import Projects from "../pages/Projects";   
 import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
+import Social from "../pages/Social";
 import Footer from "../components/Footer";
 
 
@@ -14,6 +15,7 @@ const Home = () => {
       <About />
       <Projects />
       <Skills />
+      <Social/>
       <Contact />
       
     </>
