@@ -11,20 +11,28 @@ import {
 } from "react-icons/si";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
+// Project Data
 const projects = [
   {
     title: "CI/CD Pipeline with Jenkins & Docker",
+    role: "DevOps",
     description:
       "Built a complete CI/CD pipeline using Jenkins, Docker, GitHub Webhooks, and Nginx for automated deployment.",
+    shortDescription:
+      "CI/CD pipeline for automated builds and deployment using Jenkins and Docker.",
+    duration: "Feb 2024 – Apr 2024",
     stack: [<SiJenkins key="jenkins" />, <SiDocker key="docker" />],
     demo: "#",
     github: "https://github.com/DevaseeshKumar/ReactSpring",
-    role: "DevOps",
   },
   {
     title: "Employee Leave Management System",
+    role: "Full Stack",
     description:
       "Full-stack MERN app with admin/employee roles, leave requests, email notifications, and secure auth.",
+    shortDescription:
+      "Role-based leave management app using MERN stack with email alerts.",
+    duration: "Jan 2024 – Mar 2024",
     stack: [
       <SiReact key="react" />,
       <SiNodedotjs key="node" />,
@@ -32,16 +40,18 @@ const projects = [
     ],
     demo: "http://employeeleavemanagementsys.netlify.app/",
     github: "https://github.com/DevaseeshKumar/ELMS",
-    role: "Full Stack",
   },
   {
     title: "Event Management Portal (Spring Boot)",
+    role: "Full Stack",
     description:
       "Backend system for admin/faculty/student roles, event assignment, and email notifications.",
+    shortDescription:
+      "Spring Boot backend for managing student event workflows and notifications.",
+    duration: "Mar 2024 – May 2024",
     stack: [<SiSpringboot key="springboot" />],
     demo: "#",
     github: "https://github.com/DevaseeshKumar/SDP-27-StudentActivityPortal",
-    role: "Full Stack",
   },
 ];
 
@@ -62,7 +72,7 @@ export default function Projects() {
       className="py-12 px-4 md:px-12 bg-gray-100 dark:bg-[#0a192f]"
     >
       <h2 className="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white">
-         Projects
+        Projects
       </h2>
 
       {/* Filter Tabs */}
@@ -82,7 +92,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Project Cards with Flip */}
+      {/* Project Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project, i) => (
           <div
@@ -91,24 +101,40 @@ export default function Projects() {
             className="relative w-full h-80 [perspective:1000px]"
           >
             <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group hover:[transform:rotateY(180deg)]">
-              {/* FRONT */}
-              <div className="absolute w-full h-full backface-hidden bg-white dark:bg-[#0a192f] rounded-2xl p-6 shadow-lg border border-blue-500">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 italic">
-                  Role: {project.role}
-                </p>
-                <div className="flex gap-3 text-2xl text-blue-600 dark:text-blue-400">
-                  {project.stack.map((icon, idx) => (
-                    <span key={idx} title={icon.type.name}>
-                      {icon}
-                    </span>
-                  ))}
+              {/* Front */}
+              <div className="absolute w-full h-full backface-hidden bg-white dark:bg-[#0a192f] rounded-2xl p-6 shadow-lg border border-blue-500 flex flex-col justify-between">
+                {/* Top */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm italic text-gray-500 dark:text-gray-300 mb-2">
+                    Role: {project.role}
+                  </p>
+                  <p className="text-xs text-gray-400 dark:text-gray-400 mb-4">
+                    {project.duration}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-200 line-clamp-3">
+                    {project.shortDescription}
+                  </p>
+                </div>
+
+                {/* Bottom */}
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="flex gap-4 text-4xl text-blue-600 dark:text-blue-400">
+                    {project.stack.map((icon, idx) => (
+                      <span key={idx} title={icon.type.name}>
+                        {icon}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-500 italic dark:text-gray-400 animate-pulse">
+                    
+                  </span>
                 </div>
               </div>
 
-              {/* BACK */}
+              {/* Back */}
               <div className="absolute w-full h-full backface-hidden transform rotate-y-180 bg-gray-100 dark:bg-[#112240] rounded-2xl p-6 shadow-lg text-left">
                 <p className="text-gray-800 dark:text-gray-200 text-sm mb-6">
                   {project.description}

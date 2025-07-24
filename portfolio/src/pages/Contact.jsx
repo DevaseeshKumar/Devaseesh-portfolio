@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MdEmail } from "react-icons/md"; // Email icon
+import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,18 +15,16 @@ const Contact = () => {
   };
 
   const handleSubmit = (e) => {
-    // Allow FormSubmit to do actual form submit
-    toast("Thanks for reaching out! We’ll connect to you soon.", {
+    toast.success("Thanks for reaching out! We’ll connect to you soon.", {
       position: "bottom-right",
       style: {
-        background: "rgba(0, 0, 0, 0.8)",
+        background: "#1e293b",
         color: "#fff",
         borderRadius: "8px",
         padding: "12px 16px",
       },
     });
 
-    // Reset form fields after delay to ensure FormSubmit gets data
     setTimeout(() => {
       setFormData({ name: "", email: "", message: "" });
     }, 1000);
@@ -34,31 +32,29 @@ const Contact = () => {
 
   return (
     <section
-      className="py-20 px-4 bg-white dark:bg-[#0a192f] text-gray-800 dark:text-gray-200 transition-all duration-500"
+      className="min-h-screen py-20 px-4 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-[#0a192f] dark:via-[#0a192f] dark:to-[#0f172a] transition-all duration-500"
       id="contact"
     >
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">
-          Contact <span className="text-blue-600 dark:text-blue-400">Me</span>
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-5xl font-extrabold mb-4 text-gray-800 dark:text-white">
+          Let’s <span className="text-blue-600 dark:text-blue-400">Connect</span>
         </h2>
-        <div className="w-24 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-10 rounded-full animate-pulse" />
-        <p className="text-lg mb-12 text-gray-700 dark:text-gray-300">
-          Have a question, idea, or opportunity? Drop a message below 👇
+        <div className="w-28 h-1 bg-blue-500 mx-auto mb-8 rounded-full animate-pulse" />
+        <p className="text-lg mb-12 text-gray-600 dark:text-gray-300">
+          Got a question or proposal? I’d love to hear from you ✨
         </p>
 
         <form
           onSubmit={handleSubmit}
-          action="https://formsubmit.co/thorodinsonuru@gmail.com" // 🔁 Replace with your email
+          action="https://formsubmit.co/thorodinsonuru@gmail.com"
           method="POST"
-          className="bg-white dark:bg-[#112240] shadow-xl rounded-xl p-8 space-y-6 text-left"
+          className="bg-white/60 dark:bg-[#112240]/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl rounded-2xl p-8 space-y-6 max-w-2xl mx-auto text-left"
         >
-          {/* Hide CAPTCHA & redirect settings for FormSubmit */}
           <input type="hidden" name="_captcha" value="false" />
-          
 
           <div>
-            <label className="block mb-2 text-gray-700 dark:text-gray-300 font-semibold">
-              Your Name
+            <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+              Name
             </label>
             <input
               type="text"
@@ -66,14 +62,14 @@ const Contact = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50 dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
+              placeholder="Your name"
+              className="w-full px-4 py-3 border rounded-xl shadow-inner focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block mb-2 text-gray-700 dark:text-gray-300 font-semibold">
-              Your Email
+            <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+              Email
             </label>
             <input
               type="email"
@@ -81,28 +77,28 @@ const Contact = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
-              className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50 dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
+              placeholder="you@gmail.com"
+              className="w-full px-4 py-3 border rounded-xl shadow-inner focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block mb-2 text-gray-700 dark:text-gray-300 font-semibold">
-              Your Message
+            <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+              Message
             </label>
             <textarea
               name="message"
               required
               value={formData.message}
               onChange={handleChange}
-              placeholder="Enter your message"
-              className="w-full px-4 py-3 border rounded-lg shadow-sm resize-none min-h-[150px] focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50 dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
+              placeholder="Write your message..."
+              className="w-full px-4 py-3 border rounded-xl shadow-inner min-h-[150px] resize-none focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
             />
           </div>
 
           <button
             type="submit"
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300"
+            className="flex items-center justify-center gap-2 w-full md:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
           >
             <MdEmail size={20} /> Send Message
           </button>
