@@ -1,32 +1,58 @@
+import React from "react";
+import Hero3D from "../components/Hero3D";
+import { Typewriter } from "react-simple-typewriter";
+
 const Hero = () => {
   return (
     <section className="bg-white text-gray-900 dark:bg-[#0a192f] dark:text-white min-h-screen flex items-center px-6 md:px-20 transition-colors duration-300">
+      
+
       <div className="grid md:grid-cols-2 gap-12 items-center w-full max-w-7xl mx-auto">
         {/* LEFT */}
         <div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Hi, I'm <span className="text-blue-600 dark:text-blue-400">Thor Odinson</span>
+            Hi, I'm{" "}
+            <span className="text-blue-600 dark:text-blue-400">
+              Devaseesh
+            </span>
           </h1>
-          <h2 className="text-xl sm:text-2xl text-blue-500 dark:text-blue-300 font-medium mb-6">
-            Frontend Developer
+
+          <h2 className="text-xl sm:text-2xl font-semibold text-blue-500 dark:text-blue-300 mb-4">
+            <Typewriter
+              words={[
+                "DevOps Engineer",
+                "Full Stack Developer",
+                "Cloud Enthusiast",
+                "CI/CD Automator",
+                "React & Node.js Specialist",
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
           </h2>
+
           <p className="text-gray-700 dark:text-gray-400 mb-8 max-w-md">
-            I design and develop modern, responsive, and fast user interfaces using React, Tailwind, and cutting-edge technologies. Let's build something amazing!
+            I automate, build, and scale modern applications across cloud and web platforms. From CI/CD pipelines to responsive React UIs, I blend backend logic with DevOps magic to ship reliable software.
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <a
-              href="#contact"
+              href="#projects"
               className="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition"
             >
-              Hire Me
+              View Projects
             </a>
             <a
-              href="#contact"
-              className="border border-blue-500 text-blue-600 dark:text-blue-400 px-6 py-3 rounded hover:bg-blue-500 hover:text-white transition"
-            >
-              Let's Talk
-            </a>
+  href="/Devaseesh_Resume.pdf"
+  download
+  className="border border-blue-500 text-blue-600 dark:text-blue-400 px-6 py-3 rounded hover:bg-blue-500 hover:text-white transition"
+>
+  Download Resume
+</a>
           </div>
 
           <div className="flex space-x-4 mt-8">
@@ -38,6 +64,9 @@ const Hero = () => {
             </a>
             <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-400 dark:hover:text-blue-200 text-xl">
               <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-400 dark:hover:text-blue-200 text-xl">
+              <i className="fab fa-github"></i>
             </a>
           </div>
         </div>

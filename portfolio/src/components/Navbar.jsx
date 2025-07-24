@@ -33,13 +33,13 @@ const Navbar = () => {
           <li><Link to="/social" className="hover:text-blue-600 dark:hover:text-blue-400">Social</Link></li>
         </ul>
 
-        {/* Dark Mode Toggle */}
+        {/* Dark Mode Toggle
         <button
           onClick={() => setIsDark(!isDark)}
           className="ml-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
+        </button> */}
       </div>
     </nav>
   );

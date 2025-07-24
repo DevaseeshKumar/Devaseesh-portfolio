@@ -18,10 +18,11 @@ const Social = () => {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Discord />
-          <Facebook />
+          
           <Git />
           <Linkedin />
+          <Discord />
+          <Facebook />
         </div>
       </div>
     </section>

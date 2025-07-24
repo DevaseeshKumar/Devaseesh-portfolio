@@ -1,7 +1,7 @@
 const Git = () => {
   return (
     <a
-      href="https://github.com"
+      href="https://github.com/DevaseeshKumar"
       target="_blank"
       rel="noopener noreferrer"
       className="bg-white shadow-md p-6 rounded-lg text-center hover:shadow-xl transition transform hover:-translate-y-2 duration-300 group"
