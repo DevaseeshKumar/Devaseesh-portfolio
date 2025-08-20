@@ -8,6 +8,7 @@ import {
   SiSpringboot,
   SiMongodb,
   SiNodedotjs,
+  SiMysql,
 } from "react-icons/si";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
@@ -49,7 +50,11 @@ const projects = [
     shortDescription:
       "Spring Boot backend for managing student event workflows and notifications.",
     duration: "Mar 2024 – May 2024",
-    stack: [<SiSpringboot key="springboot" />],
+    stack: [
+      <SiReact key="react" />,
+      <SiSpringboot key="springboot" />,
+      <SiMysql key="mysql" />,
+    ],
     demo: "#",
     github: "https://github.com/DevaseeshKumar/SDP-27-StudentActivityPortal",
   },
