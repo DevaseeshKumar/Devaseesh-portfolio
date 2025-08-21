@@ -12,25 +12,14 @@ import {
 } from "react-icons/si";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-// Project Data
+// Updated Project Data
 const projects = [
+  
   {
-    title: "CI/CD Pipeline with Jenkins & Docker",
-    role: "DevOps",
-    description:
-      "Built a complete CI/CD pipeline using Jenkins, Docker, GitHub Webhooks, and Nginx for automated deployment.",
-    shortDescription:
-      "CI/CD pipeline for automated builds and deployment using Jenkins and Docker.",
-    duration: "Feb 2024 – Apr 2024",
-    stack: [<SiJenkins key="jenkins" />, <SiDocker key="docker" />],
-    demo: "#",
-    github: "https://github.com/DevaseeshKumar/ReactSpring",
-  },
-  {
-    title: "Employee Leave Management System",
+    title: "Leavo",
     role: "Full Stack",
     description:
-      "Full-stack MERN app with admin/employee roles, leave requests, email notifications, and secure auth.",
+      "Full-stack MERN application with admin/employee roles, leave requests, email notifications, and secure authentication.",
     shortDescription:
       "Role-based leave management app using MERN stack with email alerts.",
     duration: "Jan 2024 – Mar 2024",
@@ -39,25 +28,54 @@ const projects = [
       <SiNodedotjs key="node" />,
       <SiMongodb key="mongo" />,
     ],
-    demo: "http://employeeleavemanagementsys.netlify.app/",
+    demo: "https://leavo.netlify.app/",
     github: "https://github.com/DevaseeshKumar/ELMS",
   },
   {
-    title: "Event Management Portal (Spring Boot)",
+    title: "Student Activity Portal",
     role: "Full Stack",
     description:
-      "Backend system for admin/faculty/student roles, event assignment, and email notifications.",
+      "Spring Boot backend system for managing student events, faculty assignments, and automated email notifications.",
     shortDescription:
-      "Spring Boot backend for managing student event workflows and notifications.",
+      "Backend system for student event management with faculty assignment.",
     duration: "Mar 2024 – May 2024",
     stack: [
       <SiReact key="react" />,
       <SiSpringboot key="springboot" />,
       <SiMysql key="mysql" />,
     ],
-    demo: "#",
+    demo: "https://studentactportal.netlify.app/",
     github: "https://github.com/DevaseeshKumar/SDP-27-StudentActivityPortal",
   },
+  {
+    title: "LEAVO Deployment with Docker & Jenkins",
+    role: "DevOps",
+    description:
+      "Deployed the LEAVO Employee Leave Management System on Docker using Jenkins CI/CD pipeline with automated builds and deployments.",
+    shortDescription:
+      "CI/CD deployment of LEAVO MERN app using Jenkins and Docker.",
+    duration: "Apr 2025 – Aug 2025",
+    stack: [<SiJenkins key="jenkins" />, <SiDocker key="docker" />,<SiReact key="react" />,
+      <SiNodedotjs key="node" />,
+      <SiMongodb key="mongo" />],
+    demo: "https://leavo.netlify.app/",
+    github: "https://github.com/DevaseeshKumar/ELMS-DevOps",
+  },
+  {
+  title: "React + Spring Boot CI/CD Demo",
+  role: "DevOps",
+  description:
+    "Demo project showcasing CI/CD pipeline using Jenkins and Docker with a React frontend and Spring Boot backend.",
+  shortDescription:
+    "Demo CI/CD pipeline for React + Spring Boot using Jenkins and Docker.",
+  duration: "Apr 2025 – Aug 2025",
+  stack: [<SiJenkins key="jenkins2" />, <SiDocker key="docker2" />,<SiReact key="react" />,
+      <SiSpringboot key="springboot" />,
+      <SiMysql key="mysql" />],
+  demo: "#",
+  github: "https://github.com/DevaseeshKumar/ReactSpring",
+}
+
 ];
 
 export default function Projects() {
@@ -108,7 +126,6 @@ export default function Projects() {
             <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group hover:[transform:rotateY(180deg)]">
               {/* Front */}
               <div className="absolute w-full h-full backface-hidden bg-white dark:bg-[#0a192f] rounded-2xl p-6 shadow-lg border border-blue-500 flex flex-col justify-between">
-                {/* Top */}
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                     {project.title}
@@ -123,8 +140,6 @@ export default function Projects() {
                     {project.shortDescription}
                   </p>
                 </div>
-
-                {/* Bottom */}
                 <div className="mt-4 flex items-center justify-between">
                   <div className="flex gap-4 text-4xl text-blue-600 dark:text-blue-400">
                     {project.stack.map((icon, idx) => (
@@ -133,9 +148,7 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <span className="text-xs text-gray-500 italic dark:text-gray-400 animate-pulse">
-                    
-                  </span>
+                  <span className="text-xs text-gray-500 italic dark:text-gray-400 animate-pulse"></span>
                 </div>
               </div>
 
