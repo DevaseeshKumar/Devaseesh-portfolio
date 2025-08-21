@@ -74,7 +74,20 @@ const projects = [
       <SiMysql key="mysql" />],
   demo: "#",
   github: "https://github.com/DevaseeshKumar/ReactSpring",
+},
+{
+  title: "WeatherNow",
+  role: "Frontend",
+  description:
+    "React + Vite + Tailwind project fetching current weather and forecast data using the OpenWeather API. No backend required.",
+  shortDescription:
+    "Weather app showing current conditions and forecast using OpenWeather API.",
+  duration: "Jul 2025",
+  stack: [<SiReact key="react-weather" />],
+  demo: "https://weathernowgg.netlify.app/",
+  github: "https://github.com/DevaseeshKumar/WeatherNow",
 }
+
 
 ];
 
