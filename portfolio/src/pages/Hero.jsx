@@ -18,13 +18,11 @@ const Hero = () => {
               words={[
                 "DevOps Engineer",
                 "Full Stack Developer",
-                "Cloud Enthusiast",
                 "CI/CD Automator",
-                "React & Node.js Specialist",
               ]}
               loop={true}
               cursor
-              cursorStyle="|"
+              cursorStyle="|" 
               typeSpeed={70}
               deleteSpeed={50}
               delaySpeed={1500}

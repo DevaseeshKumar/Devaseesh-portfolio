@@ -1,45 +1,37 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(() =>
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    }
-  }, [isDark]);
-
   return (
-    <nav className="bg-white dark:bg-[#0a192f] dark:text-white shadow sticky top-0 z-50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          <Link to="/">MyPortfolio</Link>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white/70 dark:bg-[#0a192f]/70 backdrop-blur-md shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        
+        {/* Logo */}
+        <h1 className="text-2xl font-extrabold tracking-wide text-gray-900 dark:text-white">
+          <Link 
+            to="/" 
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition duration-300"
+          >
+            MyPortfolio
+          </Link>
         </h1>
 
-        <ul className="flex space-x-6 font-medium">
-          <li><Link to="/about" className="hover:text-blue-600 dark:hover:text-blue-400">About</Link></li>
-          <li><Link to="/projects" className="hover:text-blue-600 dark:hover:text-blue-400">Projects</Link></li>
-          <li><Link to="/skills" className="hover:text-blue-600 dark:hover:text-blue-400">Skills</Link></li>
-          <li><Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400">Contact</Link></li>
-          <li><Link to="/social" className="hover:text-blue-600 dark:hover:text-blue-400">Social</Link></li>
+        {/* Nav Links */}
+        <ul className="flex space-x-10 font-medium text-gray-700 dark:text-gray-300">
+          {["about", "projects", "skills", "contact", "social"].map((item) => (
+            <li key={item} className="relative group">
+              <Link
+                to={`/${item}`}
+                className="transition duration-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+              {/* Underline animation */}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+              {/* Glow effect on hover */}
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-30 blur-md bg-blue-600 dark:bg-blue-400 transition duration-300 rounded"></span>
+            </li>
+          ))}
         </ul>
-
-        {/* Dark Mode Toggle
-        <button
-          onClick={() => setIsDark(!isDark)}
-          className="ml-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          {isDark ? <Sun size={20} /> : <Moon size={20} />}
-        </button> */}
       </div>
     </nav>
   );
