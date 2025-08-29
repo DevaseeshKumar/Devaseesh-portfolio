@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: smooth transitions for theme changes */
+* {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
