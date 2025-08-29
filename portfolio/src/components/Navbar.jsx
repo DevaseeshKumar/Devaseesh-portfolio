@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -24,31 +24,87 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <nav className="w-full bg-white dark:bg-[#0a192f] text-gray-900 dark:text-white px-6 py-4 flex justify-between items-center shadow transition-colors duration-300">
+    <nav className="w-full bg-white dark:bg-[#0a192f] text-gray-900 dark:text-white px-6 py-4 flex justify-between items-center shadow transition-colors duration-300 fixed top-0 z-50">
       {/* Logo / Brand */}
-      <button
-  onClick={() => window.location.href = "/"}
-  className="text-lg font-bold text-blue-600 hover:text-blue-800 transition-colors"
->
-  My Portfolio
-</button>
-
-
+      <ScrollLink
+        to="hero"
+        smooth={true}
+        duration={600}
+        offset={-80}
+        className="text-lg font-bold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
+      >
+        My Portfolio
+      </ScrollLink>
 
       {/* Navigation Links */}
       <div className="flex items-center gap-6">
-        <Link to="/" className="hover:text-blue-500 transition">
+        {/* <ScrollLink
+          to="hero"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
           Home
-        </Link>
-        <Link to="/about" className="hover:text-blue-500 transition">
+        </ScrollLink> */}
+
+        <ScrollLink
+          to="about"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
           About
-        </Link>
-        <Link to="/projects" className="hover:text-blue-500 transition">
+        </ScrollLink>
+
+        <ScrollLink
+          to="skills"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
+          Skills
+        </ScrollLink>
+
+        <ScrollLink
+          to="projects"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
           Projects
-        </Link>
-        <Link to="/contact" className="hover:text-blue-500 transition">
+        </ScrollLink>
+
+        <ScrollLink
+          to="certifications"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
+          Certifications
+        </ScrollLink>
+        <ScrollLink
+          to="social"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
+          Social
+        </ScrollLink>
+        <ScrollLink
+          to="contact"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
           Contact
-        </Link>
+        </ScrollLink>
 
         {/* Theme Toggle Button */}
         <button

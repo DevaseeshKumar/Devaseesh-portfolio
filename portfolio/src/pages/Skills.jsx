@@ -1,4 +1,4 @@
-import { FaReact, FaNodeJs, FaDocker, FaAws, FaLinux, FaGithub } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDocker, FaAws, FaLinux, FaGithub, FaJs } from "react-icons/fa";
 import { SiTailwindcss, SiMongodb, SiMysql, SiExpress, SiSpringboot, SiJenkins } from "react-icons/si";
 
 const Skills = () => {
@@ -8,7 +8,7 @@ const Skills = () => {
       skills: [
         { name: "React", icon: <FaReact /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-        { name: "JavaScript", icon: <i className="fab fa-js" /> },
+        { name: "JavaScript", icon: <FaJs /> },
       ],
     },
     {
@@ -39,16 +39,22 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white dark:bg-[#0a192f] text-gray-800 dark:text-gray-200 transition-all duration-500">
+    <section
+      id="skills"
+      className="py-20 px-4 bg-white dark:bg-[#0a192f] text-gray-800 dark:text-gray-200 transition-all duration-500"
+    >
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6">
           Tech <span className="text-blue-600 dark:text-blue-400">Stack</span>
         </h2>
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-12 rounded-full animate-pulse" />
+
         <div className="grid md:grid-cols-2 gap-10 text-left">
           {categories.map((category, i) => (
             <div key={i}>
-              <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">{category.title}</h3>
+              <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">
+                {category.title}
+              </h3>
               <div className="flex flex-wrap gap-4">
                 {category.skills.map((skill, j) => (
                   <div

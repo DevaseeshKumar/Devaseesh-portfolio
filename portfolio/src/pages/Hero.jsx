@@ -40,12 +40,20 @@ const Hero = () => {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="#projects"
-              className="bg-blue-600 text-white px-6 py-3 rounded shadow 
-                         hover:bg-blue-700 dark:hover:bg-blue-500 transition"
-            >
-              View Projects
-            </a>
+  href="#projects"
+  onClick={(e) => {
+    e.preventDefault(); // Prevent default instant jump
+    const target = document.querySelector("#projects");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="bg-blue-600 text-white px-6 py-3 rounded shadow 
+             hover:bg-blue-700 dark:hover:bg-blue-500 transition"
+>
+  View Projects
+</a>
+
             <a
               href="/Devaseesh_Kumar_Resume.pdf"
               download

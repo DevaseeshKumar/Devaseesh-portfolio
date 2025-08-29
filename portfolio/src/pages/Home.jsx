@@ -5,7 +5,8 @@ import Projects from "../pages/Projects";
 import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
 import Social from "../pages/Social";
-import Hero3D from "../components/Hero3D";
+import Certifications from "../pages/Certifications"; // ✅ import
+// import Hero3D from "../components/Hero3D";
 
 const animationVariants = {
   fadeSlideUp: {
@@ -39,18 +40,19 @@ const Home = () => {
   return (
     <>
       {/* Hero - always visible instantly */}
-      <motion.div
-        variants={animationVariants.fadeSlideUp}
-        initial="hidden"
-        animate="visible"
-      >
+      <section id="hero"></section>
+        <motion.div
+          variants={animationVariants.fadeSlideUp}
+          initial="hidden"
+          animate="visible"
+        >
         <Hero />
       </motion.div>
 
       {/* About */}
       <motion.div
         variants={animationVariants.fadeSlideUp}
-        initial="visible" // ensures no white space
+        initial="visible"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
       >
@@ -77,6 +79,16 @@ const Home = () => {
         <Skills />
       </motion.div>
 
+      {/* ✅ Certifications */}
+      <motion.div
+        variants={animationVariants.fadeSlideUp}
+        initial="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <Certifications />
+      </motion.div>
+
       {/* Social */}
       <motion.div
         variants={animationVariants.scaleIn}
@@ -97,7 +109,7 @@ const Home = () => {
         <Contact />
       </motion.div>
 
-      {/* Hero3D
+      {/* Hero3D (optional)
       <motion.div
         variants={animationVariants.fadeSlideLeft}
         initial="visible"
