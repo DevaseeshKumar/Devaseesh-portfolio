@@ -10,6 +10,6 @@ Demo
 Tech Stack
   - **Frontend:** React (Vite)  
   - **Styling:** Tailwind CSS  
-  - 🎞**Animations:** Framer Motion / AOS  
+  - **Animations:** Framer Motion / AOS  
   - **Icons:** React Icons / Lucide Icons  
   - **Deployment:** Netlify
