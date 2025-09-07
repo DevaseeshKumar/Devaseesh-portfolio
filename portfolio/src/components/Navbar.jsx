@@ -57,6 +57,15 @@ const Navbar = () => {
         >
           About
         </ScrollLink>
+        <ScrollLink
+          to="education"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="hover:text-blue-500 transition cursor-pointer"
+        >
+          Education
+        </ScrollLink>
 
         <ScrollLink
           to="skills"

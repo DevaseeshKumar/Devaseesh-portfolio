@@ -6,6 +6,7 @@ import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
 import Social from "../pages/Social";
 import Certifications from "../pages/Certifications"; // ✅ import
+import Education from "./Education";
 // import Hero3D from "../components/Hero3D";
 
 const animationVariants = {
@@ -57,6 +58,15 @@ const Home = () => {
         viewport={{ once: false, amount: 0.3 }}
       >
         <About />
+      </motion.div>
+      {/* Education */}
+      <motion.div
+        variants={animationVariants.fadeSlideLeft}
+        initial="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <Education />
       </motion.div>
 
       {/* Projects */}
