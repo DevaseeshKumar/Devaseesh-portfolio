@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 import awsLogo from "../assets/aws.png";
 import redhatLogo from "../assets/redhat.png";
-
+import mongoLogo from "../assets/mongo.png";
 const Certifications = () => {
   const certifications = [
     {
@@ -28,6 +28,13 @@ const Certifications = () => {
       link: "https://www.credly.com/badges/ba4e3379-bf2b-4b18-83cc-bcad1bd79633/public_url",
       icon: awsLogo,
     },
+    {
+      title: "MongoDB Certified Database Administrator",
+      issuer: "MongoDB",
+      year: "2025",
+      link: "https://www.credly.com/badges/b0c321b1-1f09-45c2-878f-617e05c8b7ec/public_url",
+      icon: mongoLogo,
+    }
   ];
 
   return (
