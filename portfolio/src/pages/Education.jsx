@@ -52,11 +52,11 @@ const Education = () => {
               className="flex justify-between items-center gap-6 p-6 bg-white dark:bg-[#112240] rounded-2xl shadow hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-transform transform hover:scale-105"
             >
               {/* Left: Institution Image */}
-              <img
+              {/* <img
                 src={edu.image}
                 alt={edu.institution}
                 className="w-20 h-20 rounded-full object-cover border-2 border-blue-500 shadow-md"
-              />
+              /> */}
 
               {/* Center: Text Content */}
               <div className="flex-1">
