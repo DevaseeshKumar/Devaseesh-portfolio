@@ -3,6 +3,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdEmail } from "react-icons/md";
 
+// Social Icons
+import Discord from "../components/social/Discord";
+import Facebook from "../components/social/Facebook";
+import Git from "../components/social/Git";
+import Linkedin from "../components/social/Linkedin";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +21,7 @@ const Contact = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     toast.success("Thanks for reaching out! We’ll connect to you soon.", {
       position: "bottom-right",
       style: {
@@ -32,23 +39,33 @@ const Contact = () => {
 
   return (
     <section
-      className="min-h-screen py-20 px-4 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-[#0a192f] dark:via-[#0a192f] dark:to-[#0f172a] transition-all duration-500"
       id="contact"
+      className="relative min-h-screen px-6 md:px-20 overflow-hidden
+                 bg-transparent transition-colors duration-500 py-20"
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-5xl font-extrabold mb-4 text-gray-800 dark:text-white">
-          Let’s <span className="text-blue-600 dark:text-blue-400">Connect</span>
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Section Heading */}
+        <h2 className="text-4xl font-bold mb-6">
+          <span className="text-gray-900 dark:text-white">Let’s</span>{" "}
+          <span className="text-blue-600 dark:text-blue-400">Connect</span>
         </h2>
-        <div className="w-28 h-1 bg-blue-500 mx-auto mb-8 rounded-full animate-pulse" />
-        <p className="text-lg mb-12 text-gray-600 dark:text-gray-300">
+        <div className="w-28 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-12 rounded-full animate-pulse" />
+        <p className="text-lg mb-12 text-gray-700 dark:text-gray-300">
           Got a question or proposal? I’d love to hear from you ✨
         </p>
 
+        {/* Social Links */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 mb-16">
+          <Git />
+          <Linkedin />
+        </div>
+
+        {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
           action="https://formsubmit.co/thorodinsonuru@gmail.com"
           method="POST"
-          className="bg-white/60 dark:bg-[#112240]/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl rounded-2xl p-8 space-y-6 max-w-2xl mx-auto text-left"
+          className="bg-white/80 dark:bg-[#112240]/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-xl rounded-3xl p-8 space-y-6 transition-all duration-500"
         >
           <input type="hidden" name="_captcha" value="false" />
 
@@ -96,12 +113,14 @@ const Contact = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="flex items-center justify-center gap-2 w-full md:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
-          >
-            <MdEmail size={20} /> Send Message
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
+            >
+              <MdEmail size={20} /> Send Message
+            </button>
+          </div>
         </form>
       </div>
 

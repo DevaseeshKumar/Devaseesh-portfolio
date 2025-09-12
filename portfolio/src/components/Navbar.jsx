@@ -28,28 +28,33 @@ const Navbar = () => {
   const navLinks = [
     { to: "about", label: "About" },
     { to: "education", label: "Education" },
-    { to: "skills", label: "Skills" },
     { to: "projects", label: "Projects" },
+    { to: "skills", label: "Skills" },
     { to: "certifications", label: "Certifications" },
-    { to: "social", label: "Social" },
     { to: "contact", label: "Contact" },
   ];
 
   return (
-    <nav className="w-full bg-white dark:bg-[#0a192f] text-gray-900 dark:text-white px-6 py-4 flex justify-between items-center shadow transition-colors duration-300 fixed top-0 z-50">
+    <nav
+      className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
+                 bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
+                 backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
+                 transition-all duration-500"
+    >
       {/* Logo */}
       <ScrollLink
         to="hero"
         smooth={true}
         duration={600}
         offset={-80}
-        className="text-lg font-bold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
+        className="text-lg md:text-xl font-extrabold text-blue-400
+                   tracking-wide hover:text-blue-300 transition-colors cursor-pointer"
       >
         My Portfolio
       </ScrollLink>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-8">
         {navLinks.map(({ to, label }) => (
           <ScrollLink
             key={to}
@@ -57,7 +62,11 @@ const Navbar = () => {
             smooth={true}
             duration={600}
             offset={-80}
-            className="hover:text-blue-500 transition cursor-pointer"
+            className="relative text-gray-200 hover:text-blue-400 
+                       transition-colors cursor-pointer text-lg
+                       after:content-[''] after:absolute after:w-0 after:h-[2px]
+                       after:left-0 after:bottom-[-4px] after:bg-blue-400
+                       after:transition-all hover:after:w-full"
           >
             {label}
           </ScrollLink>
@@ -66,10 +75,14 @@ const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+          className="p-2 rounded-full hover:bg-blue-500/20 transition"
           aria-label="Toggle theme"
         >
-          {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+          {isDark ? (
+            <Sun className="w-6 h-6 text-yellow-400" />
+          ) : (
+            <Moon className="w-6 h-6 text-blue-400" />
+          )}
         </button>
       </div>
 
@@ -77,24 +90,38 @@ const Navbar = () => {
       <div className="md:hidden flex items-center gap-2">
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+          className="p-2 rounded-full hover:bg-blue-500/20 transition"
           aria-label="Toggle theme"
         >
-          {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+          {isDark ? (
+            <Sun className="w-6 h-6 text-yellow-400" />
+          ) : (
+            <Moon className="w-6 h-6 text-blue-400" />
+          )}
         </button>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+          className="p-2 rounded-md hover:bg-blue-500/20 transition"
           aria-label="Toggle menu"
         >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {menuOpen ? (
+            <X className="w-6 h-6 text-white" />
+          ) : (
+            <Menu className="w-6 h-6 text-white" />
+          )}
         </button>
       </div>
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white dark:bg-[#0a192f] shadow-md flex flex-col items-center py-4 space-y-4 md:hidden">
+        <div
+          className="absolute top-16 left-0 w-full 
+                     bg-gradient-to-b from-[#050816]/95 via-[#0a192f]/95 to-[#1b2735]/95
+                     backdrop-blur-md border-t border-blue-500/20
+                     py-6 space-y-6 flex flex-col items-center md:hidden
+                     shadow-lg shadow-blue-500/20"
+        >
           {navLinks.map(({ to, label }) => (
             <ScrollLink
               key={to}
@@ -102,7 +129,7 @@ const Navbar = () => {
               smooth={true}
               duration={600}
               offset={-80}
-              className="hover:text-blue-500 transition cursor-pointer text-lg"
+              className="text-gray-200 hover:text-blue-400 transition-colors cursor-pointer text-lg"
               onClick={() => setMenuOpen(false)}
             >
               {label}

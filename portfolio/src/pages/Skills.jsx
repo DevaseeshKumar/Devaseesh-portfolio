@@ -41,10 +41,11 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-20 px-4 bg-white dark:bg-[#0a192f] text-gray-800 dark:text-gray-200 transition-all duration-500"
+      className="relative min-h-screen px-4 md:px-12 overflow-hidden
+                 bg-transparent transition-colors duration-500 py-16"
     >
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
           Tech <span className="text-blue-600 dark:text-blue-400">Stack</span>
         </h2>
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-12 rounded-full animate-pulse" />
@@ -59,9 +60,11 @@ const Skills = () => {
                 {category.skills.map((skill, j) => (
                   <div
                     key={j}
-                    className="flex items-center gap-2 bg-blue-100 dark:bg-[#1e3a8a] text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full shadow transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.8)]"
+                    className="flex items-center gap-2 bg-white/90 dark:bg-[#112240]/90 text-gray-900 dark:text-white 
+                               px-4 py-2 rounded-full shadow hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] 
+                               transition-all duration-300 transform hover:scale-105"
                   >
-                    <span className="text-xl">{skill.icon}</span>
+                    <span className="text-xl text-indigo-600 dark:text-indigo-400">{skill.icon}</span>
                     <span className="text-sm font-medium">{skill.name}</span>
                   </div>
                 ))}

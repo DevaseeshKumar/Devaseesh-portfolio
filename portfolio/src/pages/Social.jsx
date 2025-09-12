@@ -8,12 +8,14 @@ const Social = () => {
   return (
     <section
       id="social"
-      className="py-20 px-4 bg-white dark:bg-[#0a192f] text-gray-800 dark:text-gray-200 transition-all duration-500"
+      className="relative z-10 min-h-screen px-6 md:px-20 overflow-hidden
+                 bg-transparent transition-colors duration-500 py-20"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">
-          Connect with <span className="text-blue-600 dark:text-blue-400">Me</span>
-        </h2>
+        <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+  Connect with <span className="text-blue-600 dark:text-blue-400">Me</span>
+</h2>
+
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-10 rounded-full animate-pulse" />
 
         <p className="text-lg mb-12 text-gray-700 dark:text-gray-300">

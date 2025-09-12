@@ -62,7 +62,7 @@ const projects = [
       <SiNodedotjs key="node" />,
       <SiMongodb key="mongo" />,
     ],
-    demo: "https://leavo.netlify.app/",
+    demo: "#",
     github: "https://github.com/DevaseeshKumar/ELMS-DevOps",
   },
   {
@@ -132,9 +132,10 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
-      className="py-16 px-4 md:px-12 bg-gray-100 dark:bg-[#0a192f]"
-    >
+  id="projects"
+  className="relative min-h-screen px-4 md:px-12 overflow-hidden
+             bg-transparent transition-colors duration-500 py-16"
+>
       <h2 className="text-5xl font-extrabold text-center mb-12 text-indigo-600 dark:text-indigo-400">
         Projects
       </h2>

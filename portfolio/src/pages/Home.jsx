@@ -7,6 +7,7 @@ import Contact from "../pages/Contact";
 import Social from "../pages/Social";
 import Certifications from "../pages/Certifications"; // ✅ import
 import Education from "./Education";
+import SpaceBackground from "../components/SpaceBackground";
 // import Hero3D from "../components/Hero3D";
 
 const animationVariants = {
@@ -40,6 +41,7 @@ const animationVariants = {
 const Home = () => {
   return (
     <>
+    <SpaceBackground/>
       {/* Hero - always visible instantly */}
       <section id="hero"></section>
         <motion.div
@@ -99,7 +101,7 @@ const Home = () => {
         <Certifications />
       </motion.div>
 
-      {/* Social */}
+      {/* Social
       <motion.div
         variants={animationVariants.scaleIn}
         initial="visible"
@@ -107,7 +109,7 @@ const Home = () => {
         viewport={{ once: false, amount: 0.3 }}
       >
         <Social />
-      </motion.div>
+      </motion.div> */}
 
       {/* Contact */}
       <motion.div

@@ -15,3 +15,47 @@
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+.space-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -10;
+  transition: background 0.5s ease;
+}
+
+/* ===== Stars ===== */
+.stars {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* ===== Meteors ===== */
+.meteor {
+  position: absolute;
+  width: 2px;
+  opacity: 0.8;
+  border-radius: 50%;
+  filter: blur(1px);
+  transform: rotate(-45deg);
+  animation: meteor-fall linear infinite;
+}
+
+@keyframes meteor-fall {
+  0% {
+    transform: translateY(-200px) translateX(100vw) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-200px) rotate(45deg);
+    opacity: 0;
+  }
+}
