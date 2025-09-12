@@ -33,17 +33,27 @@ const SpaceBackground = () => {
       : "radial-gradient(ellipse at bottom, #ffffff 0%, #e0e0e0 100%)";
 
     // Generate stars
-    for (let i = 0; i < 200; i++) {
-      const star = document.createElement("div");
-      star.className = "stars";
-      star.style.top = `${Math.random() * 100}vh`;
-      star.style.left = `${Math.random() * 100}vw`;
-      star.style.width = `${Math.random() * 2 + 1}px`;
-      star.style.height = star.style.width;
-      star.style.background = isDark ? "white" : "black"; // star color changes
-      star.style.animationDuration = `${Math.random() * 4 + 4}s`; // 4–8s twinkle
-      starsContainer.appendChild(star);
-    }
+for (let i = 0; i < 100; i++) {   // ✅ fewer stars (100 instead of 200)
+  const star = document.createElement("div");
+  star.className = "stars";
+
+  const size = Math.random() * 2 + 1; // 1px – 3px
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.left = `${Math.random() * 100}vw`;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+
+  // Brighter stars glow more
+  star.style.background = isDark ? "white" : "black";
+  star.style.opacity = `${Math.random() * 0.8 + 0.2}`;
+  star.style.boxShadow = `0 0 ${size * 4}px ${isDark ? "white" : "black"}`;
+
+  // Vary twinkle duration for natural feel
+  star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+  starsContainer.appendChild(star);
+}
+
 
     // Generate fixed meteors with random delays & durations
     for (let i = 0; i < 15; i++) {

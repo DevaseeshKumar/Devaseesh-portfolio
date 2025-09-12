@@ -24,19 +24,18 @@
   transition: background 0.5s ease;
 }
 
-/* ===== Stars ===== */
 .stars {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.9;
-  animation: twinkle 4s infinite alternate;
+  animation: twinkle infinite alternate;
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0%   { opacity: 0.3; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.3; transform: scale(1); }
 }
+
 
 /* ===== Meteors ===== */
 .meteor {
