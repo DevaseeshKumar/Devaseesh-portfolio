@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Sun, Moon, Menu, X } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll";
+
+// React icons
+import {
+  FaHome,
+  FaUser,
+  FaGraduationCap,
+  FaProjectDiagram,
+  FaLaptopCode,
+  FaUsers,
+} from "react-icons/fa";
+import { GiDiploma } from "react-icons/gi"; // Correct import for GiDiploma
+import { MdEmail } from "react-icons/md";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -14,6 +26,7 @@ const Navbar = () => {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (isDark) {
@@ -26,50 +39,45 @@ const Navbar = () => {
   }, [isDark]);
 
   const navLinks = [
-    { to: "about", label: "About" },
-    { to: "education", label: "Education" },
-    { to: "projects", label: "Projects" },
-    { to: "skills", label: "Skills" },
-    { to: "certifications", label: "Certifications" },
-    { to: "contact", label: "Contact" },
+    { to: "/", label: "Home", icon: <FaHome /> },
+    { to: "/about", label: "About", icon: <FaUser /> },
+    { to: "/education", label: "Education", icon: <FaGraduationCap /> },
+    { to: "/projects", label: "Projects", icon: <FaProjectDiagram /> },
+    { to: "/skills", label: "Skills", icon: <FaLaptopCode /> },
+    { to: "/certifications", label: "Certifications", icon: <GiDiploma /> },
+    { to: "/social", label: "Social", icon: <FaUsers /> },
+    { to: "/contact", label: "Contact", icon: <MdEmail /> },
   ];
 
   return (
-    <nav
-      className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
-                 bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
-                 backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
-                 transition-all duration-500"
-    >
+    <nav className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
+                    bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
+                    backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
+                    transition-all duration-500">
+
       {/* Logo */}
-      <ScrollLink
-        to="hero"
-        smooth={true}
-        duration={600}
-        offset={-80}
+      <Link
+        to="/"
         className="text-lg md:text-xl font-extrabold text-blue-400
-                   tracking-wide hover:text-blue-300 transition-colors cursor-pointer"
+                   tracking-wide hover:text-blue-300 transition-colors flex items-center gap-2"
       >
+        
         My Portfolio
-      </ScrollLink>
+      </Link>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex items-center gap-8">
-        {navLinks.map(({ to, label }) => (
-          <ScrollLink
+      <div className="hidden md:flex items-center gap-6">
+        {navLinks.map(({ to, label, icon }) => (
+          <Link
             key={to}
             to={to}
-            smooth={true}
-            duration={600}
-            offset={-80}
-            className="relative text-gray-200 hover:text-blue-400 
-                       transition-colors cursor-pointer text-lg
-                       after:content-[''] after:absolute after:w-0 after:h-[2px]
-                       after:left-0 after:bottom-[-4px] after:bg-blue-400
-                       after:transition-all hover:after:w-full"
+            className={`flex items-center gap-2 text-lg transition-colors 
+              ${location.pathname === to ? "text-blue-400" : "text-gray-200 hover:text-blue-400"}
+              hover:scale-105`}
           >
-            {label}
-          </ScrollLink>
+            <span className="text-xl">{icon}</span>
+            <span>{label}</span>
+          </Link>
         ))}
 
         {/* Theme Toggle */}
@@ -122,18 +130,20 @@ const Navbar = () => {
                      py-6 space-y-6 flex flex-col items-center md:hidden
                      shadow-lg shadow-blue-500/20"
         >
-          {navLinks.map(({ to, label }) => (
-            <ScrollLink
+          {navLinks.map(({ to, label, icon }) => (
+            <Link
               key={to}
               to={to}
-              smooth={true}
-              duration={600}
-              offset={-80}
-              className="text-gray-200 hover:text-blue-400 transition-colors cursor-pointer text-lg"
+              className={`flex items-center gap-2 text-lg transition-colors ${
+                location.pathname === to
+                  ? "text-blue-400"
+                  : "text-gray-200 hover:text-blue-400"
+              }`}
               onClick={() => setMenuOpen(false)}
             >
-              {label}
-            </ScrollLink>
+              <span className="text-xl">{icon}</span>
+              <span>{label}</span>
+            </Link>
           ))}
         </div>
       )}
