@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import { FaAws, FaRedhat } from "react-icons/fa";
 import { SiMongodb } from "react-icons/si";
 import SpaceBackground from "../components/SpaceBackground";
+import CardSpaceBackground from "../components/CardSpaceBackground"; // 👈 like About page
 import Particles from "../components/Particles";
 
 const certifications = [
@@ -37,92 +38,86 @@ const certifications = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const certVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hover: { scale: 1.05, y: -5, transition: { type: "spring", stiffness: 250 } },
+};
+
 const Certifications = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.2 } },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } },
-  };
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
-    <motion.section
-      id="certifications"
-      className="relative min-h-screen px-6 md:px-20 flex items-center justify-center overflow-hidden py-20"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <SpaceBackground className="absolute inset-0 z-0" />
+    <section className="relative min-h-screen px-6 sm:px-10 md:px-20 py-16 flex justify-center bg-transparent">
+      {/* Global space background */}
+      <SpaceBackground />
 
+      {/* Big blurred parent card */}
       <motion.div
-        className="relative z-10 max-w-6xl w-full rounded-3xl shadow-2xl border border-white/10 overflow-hidden"
-        variants={containerVariants}
+        className="relative z-10 w-full max-w-6xl rounded-3xl shadow-2xl border border-white/20 p-8 sm:p-12 md:p-16 flex flex-col gap-12 overflow-hidden bg-black/30 backdrop-blur-lg"
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
       >
-        <Particles count={30} bigCount={8} className="absolute inset-0 z-20 pointer-events-none" />
+        {/* Card-specific animated space background */}
+        <CardSpaceBackground />
 
-        <div className="relative z-30 p-10 md:p-16 rounded-3xl bg-white/5 dark:bg-black/20 backdrop-blur-3xl">
-          <motion.h2
-            className="text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white tracking-wide"
-            variants={cardVariants}
-          >
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Certifications
-            </span>
-          </motion.h2>
+        {/* Particles */}
+        <Particles count={20} bigCount={5} className="absolute inset-0 z-20 pointer-events-none" />
 
-          <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full animate-pulse"
-            variants={cardVariants}
-          />
+        {/* Title */}
+        <motion.h2
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white relative z-10"
+          variants={cardVariants}
+        >
+          My{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            Certifications
+          </span>
+        </motion.h2>
 
-          <motion.div className="grid gap-10 md:grid-cols-2 lg:grid-cols-2" variants={containerVariants}>
-            {certifications.map((cert, index) => (
-              <motion.a
-                key={index}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={cardVariants}
-                whileHover={{ scale: 1.05, y: -8 }}
-                whileTap={{ scale: 0.97 }}
-                className="group relative p-8 rounded-3xl bg-white/20 dark:bg-[#112240]/20
-                           shadow-lg border border-white/10 dark:border-gray-700
-                           backdrop-blur-md transition-all duration-500
-                           hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]
-                           dark:hover:shadow-[0_0_25px_rgba(96,165,250,0.7)]"
-              >
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 flex items-center justify-center text-6xl rounded-2xl shadow-md">
-                    {cert.icon}
-                  </div>
-
-                  <h3 className="mt-6 text-lg font-semibold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2 text-center">
-                    {cert.title}
-                    <ExternalLink className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-12 transition-all duration-300 opacity-70 group-hover:opacity-100" />
-                  </h3>
-
-                  <p className="mt-4 text-gray-700 dark:text-gray-300 text-base">
-                    Issued by: <span className="font-medium">{cert.issuer}</span>
-                  </p>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Year: {cert.year}
-                  </p>
-                </div>
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
+        {/* Certifications Grid */}
+        <motion.div className="grid gap-8 md:grid-cols-2 relative z-10">
+          {certifications.map((cert, index) => (
+            <motion.a
+              key={index}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-8 rounded-3xl bg-white/10 dark:bg-black/20
+                         shadow-xl border border-white/20 dark:border-gray-700
+                         backdrop-blur-lg transition-all duration-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]
+                         dark:hover:shadow-[0_0_25px_rgba(96,165,250,0.7)] flex flex-col items-center"
+              variants={certVariants}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
+              viewport={{ once: false, amount: 0.2 }}
+            >
+              <div className="w-24 h-24 flex items-center justify-center text-6xl rounded-2xl shadow-md">
+                {cert.icon}
+              </div>
+              <h3 className="mt-6 text-lg font-semibold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2 text-center">
+                {cert.title}
+                <ExternalLink className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-12 transition-all duration-300 opacity-70 group-hover:opacity-100" />
+              </h3>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 text-base">
+                Issued by: <span className="font-medium">{cert.issuer}</span>
+              </p>
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                Year: {cert.year}
+              </p>
+            </motion.a>
+          ))}
+        </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import { Link as ScrollLink } from "react-scroll"; // 👈 use react-scroll
 
 // React icons
 import {
@@ -11,7 +11,7 @@ import {
   FaLaptopCode,
   FaUsers,
 } from "react-icons/fa";
-import { GiDiploma } from "react-icons/gi"; // Correct import for GiDiploma
+import { GiDiploma } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 
 const Navbar = () => {
@@ -26,7 +26,6 @@ const Navbar = () => {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     if (isDark) {
@@ -39,14 +38,14 @@ const Navbar = () => {
   }, [isDark]);
 
   const navLinks = [
-    { to: "/", label: "Home", icon: <FaHome /> },
-    { to: "/about", label: "About", icon: <FaUser /> },
-    { to: "/education", label: "Education", icon: <FaGraduationCap /> },
-    { to: "/projects", label: "Projects", icon: <FaProjectDiagram /> },
-    { to: "/skills", label: "Skills", icon: <FaLaptopCode /> },
-    { to: "/certifications", label: "Certifications", icon: <GiDiploma /> },
-    { to: "/social", label: "Social", icon: <FaUsers /> },
-    { to: "/contact", label: "Contact", icon: <MdEmail /> },
+    { to: "hero", label: "Home", icon: <FaHome /> },
+    { to: "about", label: "About", icon: <FaUser /> },
+    { to: "education", label: "Education", icon: <FaGraduationCap /> },
+    { to: "skills", label: "Skills", icon: <FaLaptopCode /> },
+    { to: "projects", label: "Projects", icon: <FaProjectDiagram /> },
+    { to: "certifications", label: "Certifications", icon: <GiDiploma /> },
+
+    { to: "contact", label: "Contact", icon: <MdEmail /> },
   ];
 
   return (
@@ -56,28 +55,34 @@ const Navbar = () => {
                     transition-all duration-500">
 
       {/* Logo */}
-      <Link
-        to="/"
-        className="text-lg md:text-xl font-extrabold text-blue-400
+      <ScrollLink
+        to="hero"
+        smooth={true}
+        duration={600}
+        offset={-70}
+        className="cursor-pointer text-lg md:text-xl font-extrabold text-blue-400
                    tracking-wide hover:text-blue-300 transition-colors flex items-center gap-2"
       >
-        
         My Portfolio
-      </Link>
+      </ScrollLink>
 
       {/* Desktop Links */}
       <div className="hidden md:flex items-center gap-6">
         {navLinks.map(({ to, label, icon }) => (
-          <Link
+          <ScrollLink
             key={to}
             to={to}
-            className={`flex items-center gap-2 text-lg transition-colors 
-              ${location.pathname === to ? "text-blue-400" : "text-gray-200 hover:text-blue-400"}
-              hover:scale-105`}
+            smooth={true}
+            duration={600}
+            offset={-70} // adjust for navbar height
+            spy={true}
+            className="cursor-pointer flex items-center gap-2 text-lg text-gray-200 
+                       hover:text-blue-400 hover:scale-105 transition-colors"
+            activeClass="text-blue-400"
           >
             <span className="text-xl">{icon}</span>
             <span>{label}</span>
-          </Link>
+          </ScrollLink>
         ))}
 
         {/* Theme Toggle */}
@@ -131,19 +136,21 @@ const Navbar = () => {
                      shadow-lg shadow-blue-500/20"
         >
           {navLinks.map(({ to, label, icon }) => (
-            <Link
+            <ScrollLink
               key={to}
               to={to}
-              className={`flex items-center gap-2 text-lg transition-colors ${
-                location.pathname === to
-                  ? "text-blue-400"
-                  : "text-gray-200 hover:text-blue-400"
-              }`}
+              smooth={true}
+              duration={600}
+              offset={-70}
+              spy={true}
+              className="cursor-pointer flex items-center gap-2 text-lg 
+                         text-gray-200 hover:text-blue-400 transition-colors"
+              activeClass="text-blue-400"
               onClick={() => setMenuOpen(false)}
             >
               <span className="text-xl">{icon}</span>
               <span>{label}</span>
-            </Link>
+            </ScrollLink>
           ))}
         </div>
       )}

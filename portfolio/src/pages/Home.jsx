@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import Hero from "../pages/Hero";
 import About from "../pages/About";
-import Projects from "../pages/Projects";
-import Skills from "../pages/Skills";
-import Contact from "../pages/Contact";
-import Social from "../pages/Social";
-import Certifications from "../pages/Certifications"; // ✅ import
 import Education from "./Education";
+import Skills from "../pages/Skills";
+import Projects from "../pages/Projects";
+import Certifications from "../pages/Certifications";
+import Social from "../pages/Social";
+import Contact from "../pages/Contact";
 import SpaceBackground from "../components/SpaceBackground";
-// import Hero3D from "../components/Hero3D";
 
 const animationVariants = {
   fadeSlideUp: {
@@ -41,16 +40,111 @@ const animationVariants = {
 const Home = () => {
   return (
     <>
-    <SpaceBackground/>
-      {/* Hero - always visible instantly */}
-      <section id="hero"></section>
+      <SpaceBackground />
+
+      {/* Hero */}
+      <section id="hero" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.scaleIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Hero />
+        </motion.div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.fadeSlideLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <About />
+        </motion.div>
+      </section>
+
+      {/* Education */}
+      <section id="education" className="min-h-screen flex items-center justify-center px-6 md:px-20">
         <motion.div
           variants={animationVariants.fadeSlideUp}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
         >
-        <Hero />
-      </motion.div>
+          <Education />
+        </motion.div>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.scaleIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Skills />
+        </motion.div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.fadeSlideUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Projects />
+        </motion.div>
+      </section>
+
+      {/* Certifications */}
+      <section id="certifications" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.fadeSlideLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Certifications />
+        </motion.div>
+      </section>
+
+      {/* Social
+      <section id="social" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.scaleIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Social />
+        </motion.div>
+      </section> */}
+
+      {/* Contact */}
+      <section id="contact" className="min-h-screen flex items-center justify-center px-6 md:px-20">
+        <motion.div
+          variants={animationVariants.fadeSlideUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full"
+        >
+          <Contact />
+        </motion.div>
+      </section>
     </>
   );
 };

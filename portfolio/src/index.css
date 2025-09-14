@@ -58,3 +58,41 @@
     opacity: 0;
   }
 }
+
+/* === Card Space Background === */
+.card-space-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem; /* match card radius */
+  overflow: hidden;
+  z-index: 0; /* behind content */
+}
+
+/* Planets */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #4facfe, #00f2fe);
+  transform-origin: -80px center;
+  animation: orbit linear infinite;
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+/* Asteroids */
+.asteroid {
+  position: absolute;
+  border-radius: 50%;
+  background: gray;
+  opacity: 0.7;
+  animation: float linear infinite alternate;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) translateX(0); opacity: 0.5; }
+  50%  { transform: translateY(-20px) translateX(10px); opacity: 1; }
+  100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+}

@@ -1,3 +1,4 @@
+// src/pages/Skills.jsx
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
@@ -18,6 +19,7 @@ import {
   SiJenkins,
 } from "react-icons/si";
 import SpaceBackground from "../components/SpaceBackground";
+import CardSpaceBackground from "../components/CardSpaceBackground"; // planets & stars
 import Particles from "../components/Particles";
 
 const Skills = () => {
@@ -44,7 +46,7 @@ const Skills = () => {
         { name: "Docker", icon: <FaDocker />, color: "#2496ED" },
         { name: "Jenkins", icon: <SiJenkins />, color: "#D24939" },
         { name: "AWS", icon: <FaAws />, color: "#FF9900" },
-        { name: "GitHub Actions", icon: <FaGithub />, color: "#6e5494" }, // changed for visible hover
+        { name: "GitHub Actions", icon: <FaGithub />, color: "#6e5494" },
       ],
     },
     {
@@ -63,10 +65,10 @@ const Skills = () => {
 
   const containerVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
+    visible: { transition: { staggerChildren: 0.2 } },
   };
 
-  const itemVariants = {
+  const cardVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } },
   };
@@ -79,65 +81,77 @@ const Skills = () => {
       animate="visible"
       variants={containerVariants}
     >
+      {/* Global Space Background */}
       <SpaceBackground className="absolute inset-0 z-0" />
 
+      {/* Big Parent Card with planets */}
       <motion.div
-        className="relative z-10 max-w-6xl w-full rounded-3xl shadow-2xl border border-white/10 overflow-hidden"
-        variants={containerVariants}
-      >
-        <Particles count={25} bigCount={7} className="absolute inset-0 z-20 pointer-events-none" />
+  className="relative z-10 w-full max-w-6xl rounded-3xl shadow-2xl border border-white/10 overflow-hidden"
+  variants={containerVariants}
+>
+  {/* Card Space Background (planets/stars/comets) */}
+  <CardSpaceBackground />
 
-        <div className="relative z-30 p-10 md:p-16 bg-white/0 dark:bg-black/0 backdrop-blur-xl rounded-3xl">
-          <motion.h2
-            className="text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white tracking-wide"
-            variants={itemVariants}
-          >
-            Tech{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Stack
-            </span>
-          </motion.h2>
+  {/* Inner content wrapper (constrain height like About/Education) */}
+  <div className="relative z-10 p-8 sm:p-12 md:p-16 flex flex-col gap-10">
+    <motion.h2
+      className="text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white tracking-wide"
+      variants={cardVariants}
+    >
+      Tech{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+        Stack
+      </span>
+    </motion.h2>
 
-          <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full animate-pulse"
-            variants={itemVariants}
-          />
+    <motion.div
+      className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full animate-pulse"
+      variants={cardVariants}
+    />
 
-          <motion.div className="grid md:grid-cols-2 gap-10 text-left" variants={containerVariants}>
-            {categories.map((category, i) => (
-              <motion.div key={i} variants={itemVariants}>
-                <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">{category.title}</h3>
-                <div className="flex flex-wrap gap-4">
-                  {category.skills.map((skill, j) => (
-                    <motion.div
-                      key={j}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
-                                 border border-white/10 backdrop-blur-xl
-                                 bg-white/10 dark:bg-black/20
-                                 transition-all duration-300 transform cursor-pointer"
-                      style={{ color: skill.color }}
-                      variants={itemVariants}
-                      whileHover={{
-                        scale: 1.1,
-                        boxShadow: `
-                          0 0 10px ${skill.color},
-                          0 0 20px ${skill.color}40,
-                          0 0 30px ${skill.color}60,
-                          0 0 50px ${skill.color}80
-                        `,
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <span className="text-xl">{skill.icon}</span>
-                      <span>{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
+    {/* Individual category cards */}
+    <div className="grid md:grid-cols-2 gap-10">
+      {categories.map((category, i) => (
+        <motion.div
+          key={i}
+          className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6 md:p-8"
+          variants={cardVariants}
+          whileHover={{ scale: 1.03 }}
+        >
+          <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">
+            {category.title}
+          </h3>
+          <div className="flex flex-wrap gap-4">
+            {category.skills.map((skill, j) => (
+              <motion.div
+                key={j}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
+                           border border-white/10 backdrop-blur-xl
+                           bg-white/10 dark:bg-black/20
+                           transition-all duration-300 transform cursor-pointer"
+                style={{ color: skill.color }}
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: `
+                    0 0 10px ${skill.color},
+                    0 0 20px ${skill.color}40,
+                    0 0 30px ${skill.color}60,
+                    0 0 50px ${skill.color}80
+                  `,
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-xl">{skill.icon}</span>
+                <span>{skill.name}</span>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.div>
+
     </motion.section>
   );
 };
