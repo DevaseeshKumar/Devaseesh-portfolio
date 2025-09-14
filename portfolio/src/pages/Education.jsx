@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
-import CardSpaceBackground from "../components/CardSpaceBackground"; // 👈 import
+import CardSpaceBackground from "../components/CardSpaceBackground";
 
 const educationData = [
   {
@@ -31,94 +31,91 @@ const educationData = [
   },
 ];
 
-// Variants
-const sectionVariants = {
-  hidden: { opacity: 0, y: 80 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.2 },
-  },
-};
-
+// Animation variants
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } },
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hover: { scale: 1.03, y: -5, transition: { type: "spring", stiffness: 200 } },
 };
 
 const Education = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
-    <motion.section
+    <section
       id="education"
-      className="relative min-h-screen px-6 md:px-20 flex items-center justify-center bg-transparent py-20 overflow-hidden"
-      variants={sectionVariants}
-      initial="hidden"
-      animate="visible"
+      className="relative min-h-screen px-6 sm:px-10 md:px-20 py-16 md:py-24 
+                 bg-transparent transition-colors duration-500 flex justify-center"
     >
-      {/* Global Space Background */}
+      {/* 🌌 Global Background */}
       <SpaceBackground />
 
-      {/* Big Parent Card with animated inner background */}
+      {/* 🌌 Big Parent Card */}
       <motion.div
-        className="relative z-10 max-w-6xl w-full rounded-3xl shadow-2xl border border-white/20 
-                   p-10 md:p-16 flex flex-col gap-12 overflow-hidden bg-black/30 backdrop-blur-xl"
+        className="relative z-10 w-full max-w-6xl rounded-3xl shadow-2xl border border-white/20 
+                   p-8 sm:p-12 md:p-16 flex flex-col gap-12 overflow-hidden bg-black/30 backdrop-blur-lg"
         variants={cardVariants}
         initial="hidden"
         whileInView="visible"
-        exit="exit"
         viewport={{ once: false, amount: 0.2 }}
       >
-        {/* Card-specific Space Background */}
+        {/* ✨ Card Background */}
         <CardSpaceBackground />
 
-        {/* Content wrapper (above inner animation) */}
+        {/* Content wrapper */}
         <div className="relative z-10 flex flex-col gap-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white tracking-wide">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Education
-            </span>
-          </h2>
+          {/* Title */}
+          <motion.div
+            className="text-center"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+              My{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                Education
+              </span>
+            </h2>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full animate-pulse" />
+          </motion.div>
 
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full animate-pulse" />
-
-          <div className="space-y-8">
-            {educationData.map((edu, index) => (
+          {/* Education Cards */}
+          <div className="flex flex-col gap-8">
+            {educationData.map((edu, i) => (
               <motion.div
-                key={index}
-                className="flex justify-between items-center gap-6 p-6 md:p-8 bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 transition-all duration-150 cursor-pointer"
+                key={i}
+                className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-2xl 
+                           shadow-xl border border-white/20 p-6 sm:p-8 flex flex-col sm:flex-row 
+                           sm:items-center sm:justify-between gap-6 cursor-pointer"
                 variants={cardVariants}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: `
-                    0 0 10px #3b82f6,
-                    0 0 20px #3b82f640,
-                    0 0 30px #3b82f660,
-                    0 0 50px #3b82f680
-                  `,
-                }}
-                whileTap={{ scale: 0.97 }}
+                whileHover="hover"
               >
-                <div className="flex-1 text-left">
-                  <h3 className="text-xl font-semibold text-blue-500 dark:text-blue-400">
+                {/* Left side */}
+                <div className="flex-1 space-y-1 text-left">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-blue-500 dark:text-blue-400">
                     {edu.degree}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">{edu.field}</p>
-                  <p className="text-gray-900 dark:text-gray-100 font-semibold">{edu.institution}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{edu.year}</p>
-                  <p className="mt-1 text-sm text-gray-900 dark:text-gray-100 font-semibold">{edu.score}</p>
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{edu.field}</p>
+                  <p className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100">
+                    {edu.institution}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{edu.year}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    {edu.score}
+                  </p>
                 </div>
 
+                {/* Status badge */}
                 <span
-                  className={`px-4 py-1 rounded-full text-sm font-semibold shadow-md border ${
-                    edu.status === "Completed"
-                      ? "bg-green-500/20 text-green-500 dark:text-green-400 border-green-400/40"
-                      : "bg-yellow-500/20 text-yellow-500 dark:text-yellow-400 border-yellow-400/40"
-                  }`}
+                  className={`px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-md border self-start sm:self-center`}
+                  style={{
+                    backgroundColor:
+                      edu.status === "Completed" ? "rgba(34,197,94,0.2)" : "rgba(234,179,8,0.2)",
+                    color: edu.status === "Completed" ? "#22c55e" : "#eab308",
+                    borderColor: edu.status === "Completed" ? "#22c55e50" : "#eab30850",
+                  }}
                 >
                   {edu.status}
                 </span>
@@ -127,7 +124,7 @@ const Education = () => {
           </div>
         </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ import { FaAws, FaRedhat } from "react-icons/fa";
 import { SiMongodb } from "react-icons/si";
 import SpaceBackground from "../components/SpaceBackground";
 import CardSpaceBackground from "../components/CardSpaceBackground"; // 👈 like About page
-import Particles from "../components/Particles";
+
 
 const certifications = [
   {
@@ -68,9 +68,7 @@ const Certifications = () => {
         {/* Card-specific animated space background */}
         <CardSpaceBackground />
 
-        {/* Particles */}
-        <Particles count={20} bigCount={5} className="absolute inset-0 z-20 pointer-events-none" />
-
+        
         {/* Title */}
         <motion.h2
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white relative z-10"

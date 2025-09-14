@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { SiCredly } from "react-icons/si";
 import SpaceBackground from "../components/SpaceBackground";
-import Particles from "../components/Particles";
+
 
 const socials = [
   {
@@ -62,8 +62,7 @@ const Social = () => {
         className="relative z-10 max-w-6xl w-full rounded-3xl shadow-2xl border border-white/10 overflow-hidden"
         variants={containerVariants}
       >
-        {/* Particles */}
-        <Particles count={20} bigCount={5} className="absolute inset-0 z-0 pointer-events-none opacity-50" />
+
 
         {/* Card Content */}
         <div className="relative z-10 p-10 md:p-16 rounded-3xl bg-white/5 dark:bg-black/20 backdrop-blur-3xl">

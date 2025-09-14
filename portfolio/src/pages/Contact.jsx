@@ -8,7 +8,7 @@ import { SiCredly } from "react-icons/si";
 
 import SpaceBackground from "../components/SpaceBackground";
 import CardSpaceBackground from "../components/CardSpaceBackground";
-import Particles from "../components/Particles";
+
 
 const socials = [
   { name: "GitHub", icon: <FaGithub />, link: "https://github.com/DevaseeshKumar", color: "#8b5cf6" },
@@ -48,7 +48,7 @@ const Contact = () => {
         viewport={{ once: false, amount: 0.2 }}
       >
         <CardSpaceBackground />
-        <Particles count={20} bigCount={5} className="absolute inset-0 z-20 pointer-events-none opacity-30" />
+        
 
         {/* Section Heading */}
         <motion.h2

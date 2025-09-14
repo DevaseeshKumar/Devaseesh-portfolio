@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll"; // 👈 use react-scroll
+import { Link as ScrollLink } from "react-scroll"; // 👈 smooth scrolling
 
 // React icons
 import {
@@ -9,7 +9,6 @@ import {
   FaGraduationCap,
   FaProjectDiagram,
   FaLaptopCode,
-  FaUsers,
 } from "react-icons/fa";
 import { GiDiploma } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
@@ -44,16 +43,16 @@ const Navbar = () => {
     { to: "skills", label: "Skills", icon: <FaLaptopCode /> },
     { to: "projects", label: "Projects", icon: <FaProjectDiagram /> },
     { to: "certifications", label: "Certifications", icon: <GiDiploma /> },
-
     { to: "contact", label: "Contact", icon: <MdEmail /> },
   ];
 
   return (
-    <nav className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
-                    bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
-                    backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
-                    transition-all duration-500">
-
+    <nav
+      className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
+                 bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
+                 backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
+                 transition-all duration-500 ease-in-out"
+    >
       {/* Logo */}
       <ScrollLink
         to="hero"
@@ -61,7 +60,8 @@ const Navbar = () => {
         duration={600}
         offset={-70}
         className="cursor-pointer text-lg md:text-xl font-extrabold text-blue-400
-                   tracking-wide hover:text-blue-300 transition-colors flex items-center gap-2"
+                   tracking-wide hover:text-blue-300 transition-colors duration-300 ease-in-out
+                   flex items-center gap-2"
       >
         My Portfolio
       </ScrollLink>
@@ -74,10 +74,11 @@ const Navbar = () => {
             to={to}
             smooth={true}
             duration={600}
-            offset={-70} // adjust for navbar height
+            offset={-70}
             spy={true}
             className="cursor-pointer flex items-center gap-2 text-lg text-gray-200 
-                       hover:text-blue-400 hover:scale-105 transition-colors"
+                       hover:text-blue-400 hover:scale-105
+                       transition-colors transition-transform duration-300 ease-in-out"
             activeClass="text-blue-400"
           >
             <span className="text-xl">{icon}</span>
@@ -88,7 +89,8 @@ const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-blue-500/20 transition"
+          className="p-2 rounded-full hover:bg-blue-500/20 
+                     transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle theme"
         >
           {isDark ? (
@@ -103,7 +105,8 @@ const Navbar = () => {
       <div className="md:hidden flex items-center gap-2">
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-blue-500/20 transition"
+          className="p-2 rounded-full hover:bg-blue-500/20 
+                     transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle theme"
         >
           {isDark ? (
@@ -115,7 +118,8 @@ const Navbar = () => {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 rounded-md hover:bg-blue-500/20 transition"
+          className="p-2 rounded-md hover:bg-blue-500/20 
+                     transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle menu"
         >
           {menuOpen ? (
@@ -127,33 +131,38 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Dropdown */}
-      {menuOpen && (
-        <div
-          className="absolute top-16 left-0 w-full 
-                     bg-gradient-to-b from-[#050816]/95 via-[#0a192f]/95 to-[#1b2735]/95
-                     backdrop-blur-md border-t border-blue-500/20
-                     py-6 space-y-6 flex flex-col items-center md:hidden
-                     shadow-lg shadow-blue-500/20"
-        >
-          {navLinks.map(({ to, label, icon }) => (
-            <ScrollLink
-              key={to}
-              to={to}
-              smooth={true}
-              duration={600}
-              offset={-70}
-              spy={true}
-              className="cursor-pointer flex items-center gap-2 text-lg 
-                         text-gray-200 hover:text-blue-400 transition-colors"
-              activeClass="text-blue-400"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className="text-xl">{icon}</span>
-              <span>{label}</span>
-            </ScrollLink>
-          ))}
-        </div>
-      )}
+      <div
+        className={`absolute top-16 left-0 w-full 
+                   bg-gradient-to-b from-[#050816]/95 via-[#0a192f]/95 to-[#1b2735]/95
+                   backdrop-blur-md border-t border-blue-500/20
+                   py-6 space-y-6 flex flex-col items-center md:hidden
+                   shadow-lg shadow-blue-500/20
+                   transform transition-all duration-500 ease-in-out
+                   ${
+                     menuOpen
+                       ? "opacity-100 scale-100"
+                       : "opacity-0 scale-95 pointer-events-none"
+                   }`}
+      >
+        {navLinks.map(({ to, label, icon }) => (
+          <ScrollLink
+            key={to}
+            to={to}
+            smooth={true}
+            duration={600}
+            offset={-70}
+            spy={true}
+            className="cursor-pointer flex items-center gap-2 text-lg 
+                       text-gray-200 hover:text-blue-400 
+                       transition-colors transition-transform duration-300 ease-in-out"
+            activeClass="text-blue-400"
+            onClick={() => setMenuOpen(false)}
+          >
+            <span className="text-xl">{icon}</span>
+            <span>{label}</span>
+          </ScrollLink>
+        ))}
+      </div>
     </nav>
   );
 };
