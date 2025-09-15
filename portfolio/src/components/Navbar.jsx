@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll"; // 👈 smooth scrolling
+import { Link as ScrollLink } from "react-scroll";
 
-// React icons
 import {
   FaHome,
   FaUser,
@@ -48,10 +47,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className="w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
-                 bg-gradient-to-r from-[#050816]/90 via-[#0a192f]/80 to-[#1b2735]/90
-                 backdrop-blur-md border-b border-blue-500/20 shadow-lg shadow-blue-500/20
-                 transition-all duration-500 ease-in-out"
+      className={`w-full fixed top-0 z-50 px-6 py-4 flex justify-between items-center
+                 transition-all duration-500 ease-in-out border-b
+                 shadow-lg
+                 ${
+                   isDark
+                     ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-blue-500/20 shadow-blue-500/20"
+                     : "bg-gradient-to-r from-white via-gray-100 to-white border-gray-200 shadow-gray-200/30"
+                 }`}
     >
       {/* Logo */}
       <ScrollLink
@@ -59,9 +62,8 @@ const Navbar = () => {
         smooth={true}
         duration={600}
         offset={-70}
-        className="cursor-pointer text-lg md:text-xl font-extrabold text-blue-400
-                   tracking-wide hover:text-blue-300 transition-colors duration-300 ease-in-out
-                   flex items-center gap-2"
+        className={`cursor-pointer text-lg md:text-xl font-extrabold tracking-wide flex items-center gap-2 transition-colors duration-300
+          ${isDark ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-500"}`}
       >
         My Portfolio
       </ScrollLink>
@@ -76,9 +78,8 @@ const Navbar = () => {
             duration={600}
             offset={-70}
             spy={true}
-            className="cursor-pointer flex items-center gap-2 text-lg text-gray-200 
-                       hover:text-blue-400 hover:scale-105
-                       transition-colors transition-transform duration-300 ease-in-out"
+            className={`cursor-pointer flex items-center gap-2 text-lg transition-colors transition-transform duration-300 ease-in-out hover:scale-105
+              ${isDark ? "text-gray-200 hover:text-blue-400" : "text-gray-800 hover:text-blue-600"}`}
             activeClass="text-blue-400"
           >
             <span className="text-xl">{icon}</span>
@@ -89,59 +90,57 @@ const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-blue-500/20 
-                     transition-colors transition-transform duration-300 ease-in-out"
+          className="p-2 rounded-full hover:bg-blue-500/20 transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle theme"
         >
           {isDark ? (
             <Sun className="w-6 h-6 text-yellow-400" />
           ) : (
-            <Moon className="w-6 h-6 text-blue-400" />
+            <Moon className="w-6 h-6 text-blue-500" />
           )}
         </button>
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Buttons */}
       <div className="md:hidden flex items-center gap-2">
         <button
           onClick={() => setIsDark((v) => !v)}
-          className="p-2 rounded-full hover:bg-blue-500/20 
-                     transition-colors transition-transform duration-300 ease-in-out"
+          className="p-2 rounded-full hover:bg-blue-500/20 transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle theme"
         >
           {isDark ? (
             <Sun className="w-6 h-6 text-yellow-400" />
           ) : (
-            <Moon className="w-6 h-6 text-blue-400" />
+            <Moon className="w-6 h-6 text-blue-500" />
           )}
         </button>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 rounded-md hover:bg-blue-500/20 
-                     transition-colors transition-transform duration-300 ease-in-out"
+          className="p-2 rounded-md hover:bg-blue-500/20 transition-colors transition-transform duration-300 ease-in-out"
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-gray-200 dark:text-white" />
           ) : (
-            <Menu className="w-6 h-6 text-white" />
+            <Menu className="w-6 h-6 text-gray-200 dark:text-white" />
           )}
         </button>
       </div>
 
       {/* Mobile Dropdown */}
       <div
-        className={`absolute top-16 left-0 w-full 
-                   bg-gradient-to-b from-[#050816]/95 via-[#0a192f]/95 to-[#1b2735]/95
-                   backdrop-blur-md border-t border-blue-500/20
-                   py-6 space-y-6 flex flex-col items-center md:hidden
-                   shadow-lg shadow-blue-500/20
+        className={`absolute top-16 left-0 w-full py-6 space-y-6 flex flex-col items-center md:hidden
                    transform transition-all duration-500 ease-in-out
                    ${
                      menuOpen
                        ? "opacity-100 scale-100"
                        : "opacity-0 scale-95 pointer-events-none"
+                   }
+                   ${
+                     isDark
+                       ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-t border-blue-500/20 shadow-blue-500/20"
+                       : "bg-gradient-to-b from-white via-gray-100 to-white border-t border-gray-200 shadow-gray-200/30"
                    }`}
       >
         {navLinks.map(({ to, label, icon }) => (
@@ -152,9 +151,8 @@ const Navbar = () => {
             duration={600}
             offset={-70}
             spy={true}
-            className="cursor-pointer flex items-center gap-2 text-lg 
-                       text-gray-200 hover:text-blue-400 
-                       transition-colors transition-transform duration-300 ease-in-out"
+            className={`cursor-pointer flex items-center gap-2 text-lg transition-colors transition-transform duration-300 ease-in-out
+              ${isDark ? "text-gray-200 hover:text-blue-400" : "text-gray-800 hover:text-blue-600"}`}
             activeClass="text-blue-400"
             onClick={() => setMenuOpen(false)}
           >
