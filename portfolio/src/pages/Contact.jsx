@@ -38,60 +38,50 @@ const socials = [
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
   useEffect(() => window.scrollTo(0, 0), []);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  // Frontend-only FormSubmit handler
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const res = await fetch("https://formsubmit.co/thorodinsonuru@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    const form = e.target;
 
-      if (res.ok) {
-        toast.success("Thank you for reaching out!", {
-          position: "bottom-right",
-          style: {
-            background: "#1e293b",
-            color: "#fff",
-            borderRadius: "8px",
-            padding: "12px 16px",
-          },
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        toast.error("❌ Failed to send. Please try again.");
-      }
-    } catch (error) {
-      toast.error("⚠️ Something went wrong. Check your connection.");
-    }
+    // Use FormData to send POST request (FormSubmit works only with form-encoded)
+    const data = new FormData(form);
+
+    fetch("https://formsubmit.co/thorodinsonuru@gmail.com", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => {
+        if (res.ok) {
+          toast.success(" Thank you for reaching out!", {
+            position: "bottom-right",
+            style: { background: "#1e293b", color: "#fff", borderRadius: "8px", padding: "12px 16px" },
+          });
+          setFormData({ name: "", email: "", message: "" });
+        } else {
+          toast.error(" Failed to send. Please try again.");
+        }
+      })
+      .catch(() => {
+        toast.error(" Something went wrong. Check your connection.");
+      });
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 200 },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { type: "spring", stiffness: 250 },
-    },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } },
+    hover: { scale: 1.05, transition: { type: "spring", stiffness: 250 } },
   };
 
   return (
@@ -107,7 +97,6 @@ const Contact = () => {
       >
         <CardSpaceBackground />
 
-        {/* Section Heading */}
         <motion.h2
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center text-gray-900 dark:text-white relative z-10"
           variants={itemVariants}
@@ -158,10 +147,11 @@ const Contact = () => {
             className="flex-1 space-y-6 p-6 md:p-8 bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-3xl shadow-xl border border-white/20 dark:border-gray-700"
             variants={itemVariants}
           >
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+
             <motion.div variants={itemVariants}>
-              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
-                Name
-              </label>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">Name</label>
               <input
                 type="text"
                 name="name"
@@ -174,9 +164,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
-                Email
-              </label>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">Email</label>
               <input
                 type="email"
                 name="email"
@@ -189,9 +177,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
-                Message
-              </label>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">Message</label>
               <textarea
                 name="message"
                 required
