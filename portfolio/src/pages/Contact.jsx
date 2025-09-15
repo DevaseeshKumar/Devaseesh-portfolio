@@ -9,32 +9,90 @@ import { SiCredly } from "react-icons/si";
 import SpaceBackground from "../components/SpaceBackground";
 import CardSpaceBackground from "../components/CardSpaceBackground";
 
-
 const socials = [
-  { name: "GitHub", icon: <FaGithub />, link: "https://github.com/DevaseeshKumar", color: "#8b5cf6" },
-  { name: "LinkedIn", icon: <FaLinkedin />, link: "https://www.linkedin.com/in/sonti-devaseesh-kumar-37206627b/", color: "#0A66C2" },
-  { name: "Email", icon: <MdEmail />, link: "mailto:devaseesh.sonti2005@gmail.com", color: "#D93025" },
-  { name: "Credly", icon: <SiCredly />, link: "https://www.credly.com/users/sonti-devaseesh-kumar", color: "#1DA1F2" },
+  {
+    name: "GitHub",
+    icon: <FaGithub />,
+    link: "https://github.com/DevaseeshKumar",
+    color: "#8b5cf6",
+  },
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedin />,
+    link: "https://www.linkedin.com/in/sonti-devaseesh-kumar-37206627b/",
+    color: "#0A66C2",
+  },
+  {
+    name: "Email",
+    icon: <MdEmail />,
+    link: "mailto:devaseesh.sonti2005@gmail.com",
+    color: "#D93025",
+  },
+  {
+    name: "Credly",
+    icon: <SiCredly />,
+    link: "https://www.credly.com/users/sonti-devaseesh-kumar",
+    color: "#1DA1F2",
+  },
 ];
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-
   useEffect(() => window.scrollTo(0, 0), []);
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Thanks for reaching out! We’ll connect with you soon.", {
-      position: "bottom-right",
-      style: { background: "#1e293b", color: "#fff", borderRadius: "8px", padding: "12px 16px" },
-    });
-    setTimeout(() => setFormData({ name: "", email: "", message: "" }), 1000);
+
+    try {
+      const res = await fetch("https://formsubmit.co/thorodinsonuru@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        toast.success("Thank you for reaching out!", {
+          position: "bottom-right",
+          style: {
+            background: "#1e293b",
+            color: "#fff",
+            borderRadius: "8px",
+            padding: "12px 16px",
+          },
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("❌ Failed to send. Please try again.");
+      }
+    } catch (error) {
+      toast.error("⚠️ Something went wrong. Check your connection.");
+    }
   };
 
-  const cardVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
-  const itemVariants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } }, hover: { scale: 1.05, transition: { type: "spring", stiffness: 250 } } };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 200 },
+    },
+    hover: {
+      scale: 1.05,
+      transition: { type: "spring", stiffness: 250 },
+    },
+  };
 
   return (
     <section className="relative min-h-screen px-6 sm:px-10 md:px-20 py-16 flex justify-center bg-transparent">
@@ -48,7 +106,6 @@ const Contact = () => {
         viewport={{ once: false, amount: 0.2 }}
       >
         <CardSpaceBackground />
-        
 
         {/* Section Heading */}
         <motion.h2
@@ -88,40 +145,53 @@ const Contact = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="text-4xl">{social.icon}</div>
-                <span className="text-lg font-semibold text-gray-900 dark:text-white">{social.name}</span>
+                <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {social.name}
+                </span>
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Contact Form Card */}
+          {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            action="https://formsubmit.co/thorodinsonuru@gmail.com"
-            method="POST"
             className="flex-1 space-y-6 p-6 md:p-8 bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-3xl shadow-xl border border-white/20 dark:border-gray-700"
             variants={itemVariants}
           >
-            <input type="hidden" name="_captcha" value="false" />
-
-            {["name", "email"].map((field, i) => (
-              <motion.div key={i} variants={itemVariants}>
-                <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
-                  {field.charAt(0).toUpperCase() + field.slice(1)}
-                </label>
-                <input
-                  type={field === "email" ? "email" : "text"}
-                  name={field}
-                  required
-                  value={formData[field]}
-                  onChange={handleChange}
-                  placeholder={field === "email" ? "you@gmail.com" : "Your name"}
-                  className="w-full px-4 py-3 border rounded-xl shadow-inner focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
-                />
-              </motion.div>
-            ))}
+            <motion.div variants={itemVariants}>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                className="w-full px-4 py-3 border rounded-xl shadow-inner focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
+              />
+            </motion.div>
 
             <motion.div variants={itemVariants}>
-              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">Message</label>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@gmail.com"
+                className="w-full px-4 py-3 border rounded-xl shadow-inner focus:ring-2 focus:ring-blue-400 outline-none transition bg-white dark:bg-[#1e293b] dark:border-gray-700 dark:text-white"
+              />
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <label className="block mb-2 text-gray-800 dark:text-gray-300 font-semibold">
+                Message
+              </label>
               <textarea
                 name="message"
                 required
