@@ -7,7 +7,8 @@ import profileImage from "../assets/image.png";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center px-6 md:px-20 overflow-hidden
-                        bg-transparent transition-colors duration-500">
+                        bg-transparent transition-colors duration-500 pt-20 md:pt-24">
+
       {/* Hero content */}
       <div className="grid md:grid-cols-2 gap-12 items-center w-full max-w-7xl mx-auto relative z-10">
         
