@@ -75,7 +75,7 @@ const Certifications = () => {
           variants={cardVariants}
         >
           My{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+          <span className="text-indigo-400">
             Certifications
           </span>
         </motion.h2>

@@ -150,7 +150,7 @@ export default function Projects() {
         className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center tracking-wide z-10 relative mb-4"
       >
         My{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+        <span className="text-indigo-400">
           Projects
         </span>
       </motion.h2>

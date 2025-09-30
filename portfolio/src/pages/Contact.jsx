@@ -102,7 +102,7 @@ const Contact = () => {
           variants={itemVariants}
         >
           Let's{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+          <span className="text-indigo-400">
             Connect
           </span>
         </motion.h2>

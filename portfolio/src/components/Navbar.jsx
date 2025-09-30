@@ -129,20 +129,22 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Dropdown */}
-      <div
-        className={`absolute top-16 left-0 w-full py-6 space-y-6 flex flex-col items-center md:hidden
-                   transform transition-all duration-500 ease-in-out
-                   ${
-                     menuOpen
-                       ? "opacity-100 scale-100"
-                       : "opacity-0 scale-95 pointer-events-none"
-                   }
-                   ${
-                     isDark
-                       ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-t border-blue-500/20 shadow-blue-500/20"
-                       : "bg-gradient-to-b from-white via-gray-100 to-white border-t border-gray-200 shadow-gray-200/30"
-                   }`}
-      >
+      {/* Mobile Dropdown */}
+<div
+  className={`fixed top-16 left-0 w-full py-6 space-y-6 flex flex-col items-center md:hidden
+             transform transition-all duration-500 ease-in-out z-40
+             ${
+               menuOpen
+                 ? "opacity-100 scale-100"
+                 : "opacity-0 scale-95 pointer-events-none"
+             }
+             ${
+               isDark
+                 ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-t border-blue-500/20 shadow-blue-500/20"
+                 : "bg-gradient-to-b from-white via-gray-100 to-white border-t border-gray-200 shadow-gray-200/30"
+             }`}
+>
+
         {navLinks.map(({ to, label, icon }) => (
           <ScrollLink
             key={to}

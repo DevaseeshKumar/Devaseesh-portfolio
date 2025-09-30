@@ -86,7 +86,7 @@ const About = () => {
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white text-center">
               About{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              <span className="text-indigo-400">
                 Me
               </span>
             </h2>
@@ -120,9 +120,10 @@ const About = () => {
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-gray-900 dark:text-white text-center">
               My{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                Skills
-              </span>
+              <span className="text-amber-300">
+  Skills
+</span>
+
             </h2>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 sm:gap-8">
               {skills.map((skill) => (
@@ -158,7 +159,7 @@ const About = () => {
             viewport={{ once: false, amount: 0.3 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white text-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              <span className="text-indigo-400">
                 Interests & More
               </span>
             </h2>
