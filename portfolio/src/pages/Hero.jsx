@@ -2,7 +2,7 @@ import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"; // ✅ React Icons
-import profileImage from "../assets/image.png";
+import profileImage from "../assets/Spider.jpg";
 
 const Hero = () => {
   return (
@@ -123,12 +123,13 @@ const Hero = () => {
             className="relative group"
           >
             <img
-              src={profileImage}
-              alt="Profile"
-              className="w-72 h-72 object-cover rounded-full shadow-2xl 
-                         border-4 border-blue-500 dark:border-blue-400
-                         transition-transform duration-500 group-hover:scale-105"
-            />
+  src={profileImage}
+  alt="Profile"
+  className="w-72 h-72 object-cover object-[center_45%] rounded-full shadow-2xl 
+             border-4 border-blue-500 dark:border-blue-400
+             transition-transform duration-500 group-hover:scale-105"
+/>
+
           </motion.div>
         </motion.div>
       </div>
