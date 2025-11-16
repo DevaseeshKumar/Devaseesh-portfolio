@@ -36,13 +36,20 @@ const Navbar = () => {
   }, [isDark]);
 
   const navLinks = [
-    { to: "hero", label: "Home", icon: <FaHome /> },
-    { to: "about", label: "About", icon: <FaUser /> },
-    { to: "education", label: "Education", icon: <FaGraduationCap /> },
-    { to: "skills", label: "Skills", icon: <FaLaptopCode /> },
-    { to: "projects", label: "Projects", icon: <FaProjectDiagram /> },
-    { to: "certifications", label: "Certifications", icon: <GiDiploma /> },
-    { to: "contact", label: "Contact", icon: <MdEmail /> },
+    // { to: "hero", label: "Home", icon: <FaHome /> },
+    // { to: "about", label: "About", icon: <FaUser /> },
+    // { to: "education", label: "Education", icon: <FaGraduationCap /> },
+    // { to: "skills", label: "Skills", icon: <FaLaptopCode /> },
+    // { to: "projects", label: "Projects", icon: <FaProjectDiagram /> },
+    // { to: "certifications", label: "Certifications", icon: <GiDiploma /> },
+    // { to: "contact", label: "Contact", icon: <MdEmail /> },
+    { to: "hero", icon: <FaHome /> },
+    { to: "about", icon: <FaUser /> },
+    { to: "education", icon: <FaGraduationCap /> },
+    { to: "skills", icon: <FaLaptopCode /> },
+    { to: "projects", icon: <FaProjectDiagram /> },
+    { to: "certifications", icon: <GiDiploma /> },
+    { to: "contact", icon: <MdEmail /> },
   ];
 
   return (
