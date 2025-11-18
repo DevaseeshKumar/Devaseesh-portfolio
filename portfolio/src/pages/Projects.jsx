@@ -46,7 +46,7 @@ const projects = [
       { name: "MySQL", color: "#4479A1", icon: <SiMysql className="text-[#4479A1]" /> },
     ],
     demo: "https://studentactportal.netlify.app/",
-    github: "https://github.com/DevaseeshKumar/SDP-27-StudentActivityPortal",
+    github: "https://github.com/DevaseeshKumar/Student-Activity-Portal",
   },
   {
     title: "LEAVO Deployment with Docker & Jenkins",
@@ -66,12 +66,12 @@ const projects = [
     github: "https://github.com/DevaseeshKumar/ELMS-DevOps",
   },
   {
-    title: "React + Spring Boot CI/CD Demo",
+    title: "Student Activity Portal Deployment with Docker & Jenkins",
     role: "DevOps",
     shortDescription:
-      "Demo CI/CD pipeline for React + Spring Boot using Jenkins and Docker.",
+      "Student Activity Portal CI/CD deployment using Jenkins and Docker.",
     description:
-      "Demo project showcasing CI/CD pipeline using Jenkins and Docker with a React frontend and Spring Boot backend.",
+      "Deployed the Student Activity Portal backend on Docker using Jenkins CI/CD pipeline with automated builds and deployments.",
     duration: "Apr 2025 – Aug 2025",
     stack: [
       { name: "Jenkins", color: "#D24939", icon: <SiJenkins className="text-[#D24939]" /> },
@@ -81,7 +81,7 @@ const projects = [
       { name: "MySQL", color: "#4479A1", icon: <SiMysql className="text-[#4479A1]" /> },
     ],
     demo: "#",
-    github: "https://github.com/DevaseeshKumar/ReactSpring",
+    github: "https://github.com/DevaseeshKumar/Student-Activity-Portal-DevOps",
   },
   {
     title: "WeatherNow",
