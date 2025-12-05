@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 export default function useTracking() {
   const ref = useRef(false);
+const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     // Prevent double call in React Strict Mode
@@ -36,7 +37,7 @@ export default function useTracking() {
     }
 
     // Send visit data to backend
-    fetch("http://localhost:5000/track", {
+    fetch(`${API}/track`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
