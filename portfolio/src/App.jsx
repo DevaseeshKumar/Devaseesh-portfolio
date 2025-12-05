@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar";
@@ -12,31 +12,30 @@ import Certifications from "./pages/Certifications";
 import Education from "./pages/Education";
 import Social from "./pages/Social";
 
-// Wrap Routes with AnimatePresence
-function AnimatedRoutes() {
-  const location = useLocation();
-
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/social" element={<Social />} />
-        <Route path="/certifications" element={<Certifications />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/education" element={<Education />} />
-      </Routes>
-    </AnimatePresence>
-  );
-}
+import useTracking from "./Tracking";
+import VisitorDashboard from "./pages/VisitorDashboard";
 
 function App() {
+  useTracking();  // 🔥 Tracks ONLY 1 visit per tab open
+
   return (
     <Router>
       <Navbar />
-      <AnimatedRoutes />
+      
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/social" element={<Social />} />
+          <Route path="/certifications" element={<Certifications />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/visitor" element={<VisitorDashboard />} />
+        </Routes>
+      </AnimatePresence>
+
       <Footer />
     </Router>
   );
