@@ -4,6 +4,7 @@ export default function useTracking() {
   const ref = useRef(false);
 
   useEffect(() => {
+    // Prevent double call in React Strict Mode
     if (ref.current) return;
     ref.current = true;
 
@@ -11,30 +12,30 @@ export default function useTracking() {
     const isRefresh =
       performance.getEntriesByType("navigation")[0]?.type === "reload";
 
-    // Track open tabs
+    // Count open tabs
     const tabCount = Number(localStorage.getItem("open_tabs") || 0);
     localStorage.setItem("open_tabs", tabCount + 1);
 
     let isNewVisit = false;
     const globalSessionActive = localStorage.getItem("global_session_active");
 
-    // FIRST TAB → NEW VISIT
+    // FIRST TAB of session → NEW VISIT
     if (!globalSessionActive && !isRefresh && tabCount === 0) {
       isNewVisit = true;
       localStorage.setItem("global_session_active", "true");
     }
 
-    // More than one tab → NOT new visit
+    // If another tab opens → NOT NEW
     if (globalSessionActive && tabCount >= 1) {
       isNewVisit = false;
     }
 
-    // Refresh → NOT new
+    // Refresh → NOT NEW
     if (isRefresh) {
       isNewVisit = false;
     }
 
-    // Send tracking WITHOUT GPS
+    // Send visit data to backend
     fetch("http://localhost:5000/track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -45,11 +46,12 @@ export default function useTracking() {
       }),
     });
 
-    // On tab close → reduce tab count
+    // Track closing tab
     window.addEventListener("pagehide", () => {
       const currentTabs = Number(localStorage.getItem("open_tabs") || 1) - 1;
       localStorage.setItem("open_tabs", currentTabs);
 
+      // If ALL tabs closed → reset session
       if (currentTabs === 0) {
         localStorage.removeItem("global_session_active");
       }
