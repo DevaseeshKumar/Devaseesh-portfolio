@@ -17,7 +17,7 @@ import CardSpaceBackground from "../components/CardSpaceBackground";
 const projects = [
   // ... (same project data as before)
   {
-    title: "Leavo",
+    title: "Employee Leave Management System",
     role: "Full Stack",
     shortDescription:
       "Role-based leave management app using MERN stack with email alerts.",
@@ -49,11 +49,11 @@ const projects = [
     github: "https://github.com/DevaseeshKumar/Student-Activity-Portal",
   },
   {
-    title: "LEAVO Deployment with Docker & Jenkins",
+    title: "Employee Leave Management System Deployment with Docker & Jenkins",
     role: "DevOps",
-    shortDescription: "CI/CD deployment of LEAVO MERN app using Jenkins and Docker.",
+    shortDescription: "CI/CD deployment of Employee Leave Management System MERN app using Jenkins and Docker.",
     description:
-      "Deployed the LEAVO Employee Leave Management System on Docker using Jenkins CI/CD pipeline with automated builds and deployments.",
+      "Deployed the Employee Leave Management System on Docker using Jenkins CI/CD pipeline with automated builds and deployments.",
     duration: "Apr 2025 – Aug 2025",
     stack: [
       { name: "Jenkins", color: "#D24939", icon: <SiJenkins className="text-[#D24939]" /> },
