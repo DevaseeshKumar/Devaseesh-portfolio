@@ -16,7 +16,7 @@ import useTracking from "./Tracking";
 import VisitorDashboard from "./pages/VisitorDashboard";
 
 function App() {
-  useTracking();  // 🔥 Tracks ONLY 1 visit per tab open
+  useTracking();
 
   return (
     <Router>
